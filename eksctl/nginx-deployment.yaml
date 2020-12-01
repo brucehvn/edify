@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: edify-ns
+  labels:
+    app: edify-nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: edify-nginx
+  template:
+    metadata:
+      labels:
+        app: edify-nginx
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: beta.kubernetes.io/arch
+                operator: In
+                values:
+                - amd64
+                - arm64
+      containers:
+      - name: nginx
+        image: nginx:1.19.2
+        ports:
+        - containerPort: 80

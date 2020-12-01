@@ -1,0 +1,15 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: EDIFY-EKS-CLUSTER
+  region: us-west-2
+  version: "1.18"
+
+nodeGroups:
+  - name: EDIFY-NODE-GROUP-1
+    instanceType: m5.large
+    desiredCapacity: 2
+    volumeSize: 20
+    ssh:
+      publicKeyPath: ~/.ssh/edify_ssh_key.pub

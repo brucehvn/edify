@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: edify-service
+  namespace: edify-ns
+  labels:
+    app: edify-ng-service
+spec:
+  selector:
+    app: edify-nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
