@@ -1,6 +1,5 @@
 terraform/.terraform
 
-edify-info.zip
 credentials.txt
 edify_ssh_key.pem
 edify_ssh_key.pub
